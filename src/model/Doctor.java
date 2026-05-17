@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Doctor extends User {
+public class Doctor extends User implements AppointmentManageable, HospitalizationManageable {
 
     private Specialty specialty;
     private String licenceNumber;

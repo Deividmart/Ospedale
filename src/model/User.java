@@ -1,6 +1,6 @@
 package model;
 
-public abstract class User {
+public abstract class User implements Identifiable, Authenticatable {
 
     protected final long id;
     protected String username;

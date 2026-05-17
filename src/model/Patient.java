@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Patient extends User {
+public class Patient extends User implements AppointmentManageable {
 
     private String email;
     private LocalDate birthdate;

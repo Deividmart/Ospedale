@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -180,5 +183,50 @@ public class DataStore {
         hospitalizations.add(hospitalization);
         hospitalization.getPatient().setHospitalization(hospitalization);
         hospitalization.getDoctor().addHospitalization(hospitalization);
+    }
+
+    // -------------------------------------------------------------------------
+    // Typed queries — used by controllers
+    // -------------------------------------------------------------------------
+
+    public ArrayList<Patient> getPatients() {
+        return users.stream()
+                .filter(u -> u instanceof Patient)
+                .map(u -> (Patient) u)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Doctor> getDoctors() {
+        return users.stream()
+                .filter(u -> u instanceof Doctor)
+                .map(u -> (Doctor) u)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Doctor> findDoctorsBySpecialty(Specialty specialty) {
+        return getDoctors().stream()
+                .filter(d -> d.getSpecialty() == specialty)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    // Returns true if the doctor has no REQUESTED or PENDING appointment within 30 minutes of datetime
+    public boolean isDoctorAvailableAt(Doctor doctor, LocalDateTime datetime) {
+        return doctor.getAppointments().stream()
+                .filter(a -> a.getStatus() == AppointmentStatus.REQUESTED
+                          || a.getStatus() == AppointmentStatus.PENDING)
+                .noneMatch(a -> Math.abs(java.time.Duration.between(a.getDatetime(), datetime).toMinutes()) < 30);
+    }
+
+    public ArrayList<Appointment> getPatientAppointmentsSorted(Patient patient) {
+        return patient.getAppointments().stream()
+                .sorted(Comparator.comparing(Appointment::getDatetime).reversed())
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Appointment> getDoctorAppointmentsSorted(Doctor doctor, boolean pendingOnly) {
+        return doctor.getAppointments().stream()
+                .filter(a -> !pendingOnly || a.getStatus() == AppointmentStatus.PENDING)
+                .sorted(Comparator.comparing(Appointment::getDatetime).reversed())
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

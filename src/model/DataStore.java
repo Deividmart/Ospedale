@@ -8,22 +8,38 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import model.interfaces.ModelObservable;
+import model.interfaces.ModelObserver;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class DataStore {
+public class DataStore implements ModelObservable {
 
     private static DataStore instance;
 
     private ArrayList<User> users;
     private ArrayList<Appointment> appointments;
     private ArrayList<Hospitalization> hospitalizations;
+    private ArrayList<ModelObserver> observers;
 
     private DataStore() {
         this.users = new ArrayList<>();
         this.appointments = new ArrayList<>();
         this.hospitalizations = new ArrayList<>();
+        this.observers = new ArrayList<>();
         loadUsersFromJSON();
+    }
+
+    @Override
+    public void addObserver(ModelObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (ModelObserver observer : observers) {
+            observer.onModelChanged();
+        }
     }
 
     public static DataStore getInstance() {
@@ -151,6 +167,7 @@ public class DataStore {
 
     public void addUser(User user) {
         users.add(user);
+        notifyObservers();
     }
 
     // -------------------------------------------------------------------------
@@ -167,6 +184,7 @@ public class DataStore {
         appointments.add(appointment);
         appointment.getPatient().addAppointment(appointment);
         appointment.getDoctor().addAppointment(appointment);
+        notifyObservers();
     }
 
     // -------------------------------------------------------------------------
@@ -183,6 +201,7 @@ public class DataStore {
         hospitalizations.add(hospitalization);
         hospitalization.getPatient().setHospitalization(hospitalization);
         hospitalization.getDoctor().addHospitalization(hospitalization);
+        notifyObservers();
     }
 
     // -------------------------------------------------------------------------

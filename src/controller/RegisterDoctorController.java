@@ -1,12 +1,13 @@
 package controller;
 
+import controller.interfaces.IRegisterDoctorController;
 import model.Administrator;
 import model.DataStore;
 import model.Doctor;
 import model.Specialty;
 import model.User;
 
-public class RegisterDoctorController {
+public class RegisterDoctorController implements IRegisterDoctorController {
 
     private final DataStore store = DataStore.getInstance();
 

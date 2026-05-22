@@ -1,5 +1,6 @@
 package model;
 
+import model.interfaces.AppointmentManageable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

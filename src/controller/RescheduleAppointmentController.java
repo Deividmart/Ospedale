@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IRescheduleAppointmentController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
-public class RescheduleAppointmentController {
+public class RescheduleAppointmentController implements IRescheduleAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -51,6 +52,7 @@ public class RescheduleAppointmentController {
 
         appointment.setDatetime(newDatetime);
         appointment.setReason(appointment.getReason() + " | Rescheduled: " + rescheduleReason);
+        store.notifyObservers();
         return new Response(Response.OK, "Appointment rescheduled successfully");
     }
 }

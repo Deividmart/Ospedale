@@ -1,12 +1,13 @@
 package controller;
 
+import controller.interfaces.IPrescribeMedicationController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
 import model.Doctor;
 import model.Prescription;
 
-public class PrescribeMedicationController {
+public class PrescribeMedicationController implements IPrescribeMedicationController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -35,7 +36,7 @@ public class PrescribeMedicationController {
         Prescription prescription = new Prescription(appointment, medicationName, dose,
                 administrationRoute, treatmentDuration, additionalInstructions, frequency);
         appointment.addPrescription(prescription);
-
+        store.notifyObservers();
         return new Response(Response.OK, "Medication prescribed successfully");
     }
 }

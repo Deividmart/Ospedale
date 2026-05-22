@@ -10,6 +10,6 @@ public class Main {
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
-        java.awt.EventQueue.invokeLater(() -> new packagee.NewJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new view.LoginRegisterView().setVisible(true));
     }
 }

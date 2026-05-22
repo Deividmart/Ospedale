@@ -1,5 +1,8 @@
 package model;
 
+import model.interfaces.Identifiable;
+import model.interfaces.Authenticatable;
+
 public abstract class User implements Identifiable, Authenticatable {
 
     protected final long id;

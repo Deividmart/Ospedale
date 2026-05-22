@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.IRegisterPatientController;
 import model.DataStore;
 import model.Patient;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class RegisterPatientController {
+public class RegisterPatientController implements IRegisterPatientController {
 
     private final DataStore store = DataStore.getInstance();
 

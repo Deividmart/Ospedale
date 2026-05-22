@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.IAcceptAppointmentController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
 import model.Doctor;
 
-public class AcceptAppointmentController {
+public class AcceptAppointmentController implements IAcceptAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -22,6 +23,7 @@ public class AcceptAppointmentController {
                     "Appointment must be REQUESTED to accept (current: " + appointment.getStatus() + ")");
         }
         appointment.setStatus(AppointmentStatus.PENDING);
+        store.notifyObservers();
         return new Response(Response.OK, "Appointment accepted");
     }
 }

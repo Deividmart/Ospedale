@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IRequestAppointmentController;
 import model.Appointment;
 import model.DataStore;
 import model.Doctor;
@@ -12,7 +13,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
-public class RequestAppointmentController {
+public class RequestAppointmentController implements IRequestAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 

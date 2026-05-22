@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.ICompleteAppointmentController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
 import model.Doctor;
 
-public class CompleteAppointmentController {
+public class CompleteAppointmentController implements ICompleteAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -22,6 +23,7 @@ public class CompleteAppointmentController {
                     "Appointment must be PENDING to complete (current: " + appointment.getStatus() + ")");
         }
         appointment.setStatus(AppointmentStatus.COMPLETED);
+        store.notifyObservers();
         return new Response(Response.OK, "Appointment completed");
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import model.interfaces.AppointmentManageable;
+import model.interfaces.HospitalizationManageable;
 import java.util.ArrayList;
 
 public class Doctor extends User implements AppointmentManageable, HospitalizationManageable {

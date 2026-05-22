@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.IAcceptHospitalizationController;
 import model.DataStore;
 import model.Doctor;
 import model.Hospitalization;
 import model.HospitalizationStatus;
 
-public class AcceptHospitalizationController {
+public class AcceptHospitalizationController implements IAcceptHospitalizationController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -22,6 +23,7 @@ public class AcceptHospitalizationController {
                     "Hospitalization must be REQUESTED to accept (current: " + hospitalization.getStatus() + ")");
         }
         hospitalization.setStatus(HospitalizationStatus.ONGOING);
+        store.notifyObservers();
         return new Response(Response.OK, "Hospitalization accepted");
     }
 }

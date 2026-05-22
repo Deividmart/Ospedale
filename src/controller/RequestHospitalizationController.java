@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IRequestHospitalizationController;
 import model.DataStore;
 import model.Doctor;
 import model.Hospitalization;
@@ -9,7 +10,7 @@ import model.User;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class RequestHospitalizationController {
+public class RequestHospitalizationController implements IRequestHospitalizationController {
 
     private final DataStore store = DataStore.getInstance();
 

@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.ICancelHospitalizationController;
 import model.DataStore;
 import model.Doctor;
 import model.Hospitalization;
 import model.HospitalizationStatus;
 
-public class CancelHospitalizationController {
+public class CancelHospitalizationController implements ICancelHospitalizationController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -22,6 +23,7 @@ public class CancelHospitalizationController {
                     "Hospitalization must be REQUESTED to deny (current: " + hospitalization.getStatus() + ")");
         }
         hospitalization.setStatus(HospitalizationStatus.CANCELED);
+        store.notifyObservers();
         return new Response(Response.OK, "Hospitalization denied");
     }
 }

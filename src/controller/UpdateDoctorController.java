@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.IUpdateDoctorController;
 import model.DataStore;
 import model.Doctor;
 import model.Specialty;
 import model.User;
 
-public class UpdateDoctorController {
+public class UpdateDoctorController implements IUpdateDoctorController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -63,7 +64,7 @@ public class UpdateDoctorController {
         doctor.setSpecialty(specialtyEnum);
         doctor.setLicenceNumber(licenceNumber.trim());
         doctor.setAssignedOffice(assignedOffice.trim());
-
+        store.notifyObservers();
         return new Response(Response.OK, "Doctor updated successfully");
     }
 }

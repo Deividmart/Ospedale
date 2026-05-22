@@ -1,11 +1,12 @@
 package controller;
 
+import controller.interfaces.ICancelAppointmentController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
 import model.Patient;
 
-public class CancelAppointmentController {
+public class CancelAppointmentController implements ICancelAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -24,6 +25,7 @@ public class CancelAppointmentController {
             return new Response(Response.BAD_REQUEST, "Appointment is already canceled");
         }
         appointment.setStatus(AppointmentStatus.CANCELED);
+        store.notifyObservers();
         return new Response(Response.OK, "Appointment canceled");
     }
 }

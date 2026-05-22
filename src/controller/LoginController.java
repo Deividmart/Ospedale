@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.ILoginController;
 import model.Administrator;
 import model.DataStore;
 import model.Doctor;
@@ -7,7 +8,7 @@ import model.User;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LoginController {
+public class LoginController implements ILoginController {
 
     private final DataStore store = DataStore.getInstance();
 

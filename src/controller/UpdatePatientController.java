@@ -1,12 +1,13 @@
 package controller;
 
+import controller.interfaces.IUpdatePatientController;
 import model.DataStore;
 import model.Patient;
 import model.User;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class UpdatePatientController {
+public class UpdatePatientController implements IUpdatePatientController {
 
     private final DataStore store = DataStore.getInstance();
 
@@ -73,7 +74,7 @@ public class UpdatePatientController {
         patient.setGender(genderBool);
         patient.setPhone(phoneNum);
         patient.setAddress(address);
-
+        store.notifyObservers();
         return new Response(Response.OK, "Patient updated successfully");
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IHospitalizeFromAppointmentController;
 import model.Appointment;
 import model.AppointmentStatus;
 import model.DataStore;
@@ -10,7 +11,7 @@ import model.RoomType;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class HospitalizeFromAppointmentController {
+public class HospitalizeFromAppointmentController implements IHospitalizeFromAppointmentController {
 
     private final DataStore store = DataStore.getInstance();
 

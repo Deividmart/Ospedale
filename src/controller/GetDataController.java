@@ -1,5 +1,6 @@
 package controller;
 
+import controller.interfaces.IGetDataController;
 import model.Administrator;
 import model.Appointment;
 import model.DataStore;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class GetDataController {
+public class GetDataController implements IGetDataController {
 
     private final DataStore store = DataStore.getInstance();
 

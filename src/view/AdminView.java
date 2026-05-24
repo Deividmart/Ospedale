@@ -55,11 +55,11 @@ public class AdminView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new packagee.PanelRound();
-        panelRound2 = new packagee.PanelRound();
+        panelRound1 = new view.PanelRound();
+        panelRound2 = new view.PanelRound();
         btnClose = new javax.swing.JButton();
         lblAdminView = new javax.swing.JLabel();
-        panelRound3 = new packagee.PanelRound();
+        panelRound3 = new view.PanelRound();
         btnGoToDoctor = new javax.swing.JButton();
         btnGoToPatient = new javax.swing.JButton();
         lblDocFirstname = new javax.swing.JLabel();
@@ -513,9 +513,9 @@ public class AdminView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDocUsername;
     private javax.swing.JLabel lblSelectDoctor;
     private javax.swing.JLabel lblSelectPatient;
-    private packagee.PanelRound panelRound1;
-    private packagee.PanelRound panelRound2;
-    private packagee.PanelRound panelRound3;
+    private view.PanelRound panelRound1;
+    private view.PanelRound panelRound2;
+    private view.PanelRound panelRound3;
     private javax.swing.JTextField txtDocConfirmPwd;
     private javax.swing.JTextField txtDocFirstname;
     private javax.swing.JTextField txtDocId;

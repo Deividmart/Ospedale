@@ -99,8 +99,8 @@ public class PatientView extends javax.swing.JFrame implements model.interfaces.
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
-        panelRound1 = new packagee.PanelRound();
-        panelRound2 = new packagee.PanelRound();
+        panelRound1 = new view.PanelRound();
+        panelRound2 = new view.PanelRound();
         btnClose = new javax.swing.JButton();
         lblPatientView = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -1002,8 +1002,8 @@ public class PatientView extends javax.swing.JFrame implements model.interfaces.
     private javax.swing.JLabel lblRequestHosp;
     private javax.swing.JLabel lblRoomType;
     private javax.swing.JLabel lblUsername;
-    private packagee.PanelRound panelRound1;
-    private packagee.PanelRound panelRound2;
+    private view.PanelRound panelRound1;
+    private view.PanelRound panelRound2;
     private javax.swing.JRadioButton rdbByDoctor;
     private javax.swing.JRadioButton rdbBySpecialty;
     private javax.swing.JScrollPane scrAppointmentReason;

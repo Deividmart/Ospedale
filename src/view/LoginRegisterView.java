@@ -42,11 +42,11 @@ public class LoginRegisterView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new packagee.PanelRound();
-        panelRound2 = new packagee.PanelRound();
+        panelRound1 = new view.PanelRound();
+        panelRound2 = new view.PanelRound();
         btnClose = new javax.swing.JButton();
         tabLogin = new javax.swing.JTabbedPane();
-        panelRound3 = new packagee.PanelRound();
+        panelRound3 = new view.PanelRound();
         lblLogin = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
@@ -492,9 +492,9 @@ public class LoginRegisterView extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegPhone;
     private javax.swing.JLabel lblRegUsername;
     private javax.swing.JLabel lblUsername;
-    private packagee.PanelRound panelRound1;
-    private packagee.PanelRound panelRound2;
-    private packagee.PanelRound panelRound3;
+    private view.PanelRound panelRound1;
+    private view.PanelRound panelRound2;
+    private view.PanelRound panelRound3;
     private javax.swing.JTabbedPane tabLogin;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtRegAddress;

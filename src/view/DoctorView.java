@@ -139,8 +139,8 @@ public class DoctorView extends javax.swing.JFrame implements model.interfaces.M
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new packagee.PanelRound();
-        panelRound2 = new packagee.PanelRound();
+        panelRound1 = new view.PanelRound();
+        panelRound2 = new view.PanelRound();
         btnClose = new javax.swing.JButton();
         lblDoctorView = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -1511,8 +1511,8 @@ public class DoctorView extends javax.swing.JFrame implements model.interfaces.M
     private javax.swing.JLabel lblSpecialty;
     private javax.swing.JLabel lblTreatmentDuration;
     private javax.swing.JLabel lblUsername;
-    private packagee.PanelRound panelRound1;
-    private packagee.PanelRound panelRound2;
+    private view.PanelRound panelRound1;
+    private view.PanelRound panelRound2;
     private javax.swing.JRadioButton rdbHospRequests;
     private javax.swing.JRadioButton rdbPatientId;
     private javax.swing.JRadioButton rdbPendingAppointments;

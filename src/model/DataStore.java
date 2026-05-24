@@ -233,7 +233,7 @@ public class DataStore implements ModelObservable {
         return doctor.getAppointments().stream()
                 .filter(a -> a.getStatus() == AppointmentStatus.REQUESTED
                           || a.getStatus() == AppointmentStatus.PENDING)
-                .noneMatch(a -> Math.abs(java.time.Duration.between(a.getDatetime(), datetime).toMinutes()) < 30);
+                .noneMatch(a -> Math.abs(java.time.Duration.between(a.getDatetime(), datetime).toMinutes()) < 15);
     }
 
     public ArrayList<Appointment> getPatientAppointmentsSorted(Patient patient) {

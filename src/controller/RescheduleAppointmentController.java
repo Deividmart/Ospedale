@@ -44,7 +44,7 @@ public class RescheduleAppointmentController implements IRescheduleAppointmentCo
                 .filter(a -> !a.getId().equals(appointmentId))
                 .filter(a -> a.getStatus() == AppointmentStatus.REQUESTED
                           || a.getStatus() == AppointmentStatus.PENDING)
-                .noneMatch(a -> Math.abs(Duration.between(a.getDatetime(), newDatetime).toMinutes()) < 30);
+                .noneMatch(a -> Math.abs(Duration.between(a.getDatetime(), newDatetime).toMinutes()) < 15);
 
         if (!available) {
             return new Response(Response.BAD_REQUEST, "Doctor is not available at the new time");
